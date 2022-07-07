@@ -33,4 +33,13 @@ function rollBetween(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-document.getElementById("currentDiceRoll").innerHTML = "The current roll is: " + rollD20();
+var diceRoll = rollD20();
+var diceRollElement = document.getElementById("currentDiceRoll");
+diceRollElement.innerHTML = "The current roll is: " + diceRoll;
+if (diceRoll == 20) {
+    diceRollElement.innerHTML += " (CRITICAL HIT!)";
+    diceRollElement.classList.add("critSuccess");
+} else if (diceRoll == 1) {
+    diceRollElement.innerHTML += " (CRITICAL FAIL!)";
+    diceRollElement.classList.add("critFail");
+}
